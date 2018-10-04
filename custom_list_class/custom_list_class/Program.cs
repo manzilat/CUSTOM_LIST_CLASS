@@ -10,6 +10,24 @@ namespace custom_list_class
     {
         static void Main(string[] args)
         {
+            CustomList<int> testList = new CustomList<int>();
+            CustomList<int> testList2 = new CustomList<int>();
+
+            //CustomList<int> answer = testList + testList2;
+
+
+
+            testList.Add(1);
+            testList.Add(2);
+            testList.Add(3);
+            testList.Add(4);
+            testList.Add(5);
+            testList.Add(6);
+            testList.Add(7);
+            testList.Add(8);
+
+
+
         }
     }
 }
