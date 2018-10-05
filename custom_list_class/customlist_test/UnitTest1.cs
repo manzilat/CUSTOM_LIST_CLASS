@@ -17,7 +17,7 @@ namespace custom_list_class
             int expected = 0;
 
             // Act
-            
+           
 
             //Assert
             Assert.AreEqual(expected, numbers[1]);
@@ -43,14 +43,28 @@ namespace custom_list_class
 
             // Arrange
             CustomList<int> numbers = new CustomList<int>();
-            int expected = 0;
+            int expected = 6;
             // Act
             numbers.Add(2);
             numbers.Add(6);
-            numbers.Add(12);
+            numbers.Add(6);
             //Assert
-            Assert.AreEqual(expected, numbers[0]);
+            Assert.AreEqual(expected, numbers[1]);
 
         }
     }
 }
+//[TestMethod]
+//public void Add_String_
+
+//    // Arrange
+//    CustomList<int> numbers = new CustomList<int>();
+//    int expected = 1;
+//    // Act
+//    numbers.Add(2);
+//    numbers.Add(6);
+//    numbers.Add(6);
+//    //Assert
+//    Assert.AreEqual(expected, numbers[2]);
+
+//}

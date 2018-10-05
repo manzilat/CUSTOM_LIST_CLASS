@@ -10,13 +10,13 @@ namespace custom_list_class
     {
         T[] data;
         int count ;
-        private T[] arr = new T[4];
+        
        
 
         public T this[int i]
         {
-            get { return arr[i]; }
-            set { arr[i] = value; }
+            get { return data[i]; }
+            set { data[i] = value; }
         }
         public int Count
         {
@@ -25,29 +25,36 @@ namespace custom_list_class
                 return count;
             }
         }
-
+        public int Capacity = 4;
         public CustomList()
         {
-            data = new T[4];
+            data = new T[Capacity];
             count = 0;
         }
-        public int Capacity = 4;
-        //private T[] IncreaseSize()
-        //{
-        //    T[] temp = new T[ data * 2];
-        //    //if the array is not large enough, its size is double
-        //    //copy all elements into new array
 
-        //    T[] data = new T[4];
-        //    return temp;
-        //}
+        
+         
         public void Add(T value)
         {
-            T[] temp = new T[Capacity * 2];
-            data[count] = value;
+            if(count == Capacity)
+            {
+                T[] temp = new T[Capacity * 2];
+                for (int i = 0; i < count; i++)
+                {
+                    temp[i] = data[i];
+                }
+                data[count] = value;
+                data = temp;
+            }
+            else
+            {
+                data[count] = value;
+            }
+            
+
             count++;
 
-            //data = temp;
+            
         }
 
     }

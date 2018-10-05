@@ -11,7 +11,7 @@ namespace custom_list_class
         static void Main(string[] args)
         {
             CustomList<int> testList = new CustomList<int>();
-            CustomList<int> testList2 = new CustomList<int>();
+           
             testList.Add(1);
             testList.Add(2);
 
@@ -21,8 +21,14 @@ namespace custom_list_class
             testList.Add(6);
             testList.Add(7);
             testList.Add(8);
-            
-               
+            testList.Add(11);
+            testList.Add(41);
+            testList.Add(51);
+            testList.Add(61);
+            testList.Add(71);
+            testList.Add(81);
+
+
 
         }
     }
