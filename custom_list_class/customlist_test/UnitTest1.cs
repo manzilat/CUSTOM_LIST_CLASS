@@ -14,13 +14,13 @@ namespace custom_list_class
 
             // Arrange
             CustomList<int> numbers = new CustomList<int>();
-            int expected = 1;
+            int expected = 0;
 
             // Act
-            numbers.Add(2);
+            
 
             //Assert
-            Assert.AreEqual(expected, numbers[0]);
+            Assert.AreEqual(expected, numbers[1]);
 
         }
 
@@ -43,12 +43,13 @@ namespace custom_list_class
 
             // Arrange
             CustomList<int> numbers = new CustomList<int>();
-            int expected = 1;
+            int expected = 0;
             // Act
             numbers.Add(2);
+            numbers.Add(6);
+            numbers.Add(12);
             //Assert
             Assert.AreEqual(expected, numbers[0]);
-
 
         }
     }
