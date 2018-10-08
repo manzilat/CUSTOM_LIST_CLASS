@@ -10,9 +10,14 @@ namespace custom_list_class
     {
         T[] data;
         int count ;
-        
        
+        public T[] objects = new T[0];
+        public int size { get; private set; }
 
+        public CustomList()
+        {
+            size = 0;
+        }
         public T this[int i]
         {
             get { return data[i]; }
@@ -25,18 +30,36 @@ namespace custom_list_class
                 return count;
             }
         }
+        //public void Add(T value)
+        //{
+        //    if (objects.Length <= size)
+        //    {
+        //        T[] tempArray = new T[size + 1];
+        //        for (int i = 0; i < size; i++)
+        //        {
+        //            tempArray[i] = objects[i];
+        //        }
+        //        tempArray[size] = value;
+        //        size++;
+        //        objects = tempArray;
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            //no try
+        //        }
+        //        catch (ArgumentOutOfRangeException e)
+        //        {
+        //            Console.WriteLine(e);
+        //        }
+        //    }
+        //}
         public int Capacity = 4;
-        public CustomList()
-        {
-            data = new T[Capacity];
-            count = 0;
-        }
 
-        
-         
         public void Add(T value)
         {
-            if(count == Capacity)
+            if (count == Capacity)
             {
                 T[] temp = new T[Capacity * 2];
                 for (int i = 0; i < count; i++)
@@ -50,13 +73,16 @@ namespace custom_list_class
             {
                 data[count] = value;
             }
-            
+
 
             count++;
+        }
 
-            
+
+
+
         }
 
     }
 
-}
+

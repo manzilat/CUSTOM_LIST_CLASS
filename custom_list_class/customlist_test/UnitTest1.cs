@@ -47,24 +47,23 @@ namespace custom_list_class
             // Act
             numbers.Add(2);
             numbers.Add(6);
-            numbers.Add(6);
+            
             //Assert
             Assert.AreEqual(expected, numbers[1]);
 
         }
+        [TestMethod]
+        public void Add_MultipleObjects_ToList()
+        {
+            //Arrange
+            CustomList<String> list = new CustomList<string>();
+            //Act
+            list.Add("hi");
+            list.Add("bye");
+            list.Add("hello");
+            //Assert
+            Assert.AreEqual(list.size, 3);
+        }
     }
 }
-//[TestMethod]
-//public void Add_String_
 
-//    // Arrange
-//    CustomList<int> numbers = new CustomList<int>();
-//    int expected = 1;
-//    // Act
-//    numbers.Add(2);
-//    numbers.Add(6);
-//    numbers.Add(6);
-//    //Assert
-//    Assert.AreEqual(expected, numbers[2]);
-
-//}
