@@ -10,14 +10,9 @@ namespace custom_list_class
     {
         T[] data;
         int count ;
+        private T[] arr = new T[4];
        
-        public T[] objects = new T[0];
-        public int size { get; private set; }
 
-        public CustomList()
-        {
-            size = 0;
-        }
         public T this[int i]
         {
             get { return data[i]; }
@@ -30,32 +25,14 @@ namespace custom_list_class
                 return count;
             }
         }
-        //public void Add(T value)
-        //{
-        //    if (objects.Length <= size)
-        //    {
-        //        T[] tempArray = new T[size + 1];
-        //        for (int i = 0; i < size; i++)
-        //        {
-        //            tempArray[i] = objects[i];
-        //        }
-        //        tempArray[size] = value;
-        //        size++;
-        //        objects = tempArray;
-        //    }
-        //    else
-        //    {
-        //        try
-        //        {
-        //            //no try
-        //        }
-        //        catch (ArgumentOutOfRangeException e)
-        //        {
-        //            Console.WriteLine(e);
-        //        }
-        //    }
-        //}
-        public int Capacity = 4;
+
+        public CustomList()
+        {
+            data = new T[4];
+            count = 0;
+        }
+
+        static public int Capacity=8;
 
         public void Add(T value)
         {
@@ -77,12 +54,36 @@ namespace custom_list_class
 
             count++;
         }
+            public bool Remove(T input)
+            {
+                bool removed = false;
+                T[] result = new T[Capacity];
 
-
-
+                for (int i = 0; i < count; i++)
+                {
+                    if (arr[i].Equals(input) && !removed)
+                    {
+                        removed = true;
+                        count--;
+                        if (i < count)
+                        {
+                            result[i] = arr[i + 1];
+                        }
+                    }
+                    else if (removed)
+                    {
+                        result[i] = arr[i + 1];
+                    }
+                    else
+                    {
+                        result[i] = arr[i];
+                    }
+                }
+                arr = result;
+                return removed;
+            }
 
         }
 
     }
-
 
