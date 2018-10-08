@@ -52,19 +52,22 @@ namespace custom_list_class
             Assert.AreEqual(expected, numbers[1]);
 
         }
-        //[TestMethod]
-        //public void Add_MultiInt_ImprovedArray()
-        //{
-        //    // Arrange
-        //    CustomList<int> list = new CustomList<int>();
-        //    CustomList<int> expected = new CustomList<int>() { 1, 2, 3 };
-        //    // Act 
+        [TestMethod]
+        public void Add_MultiInt_ImprovedArray()
+        {
+            // Arrange
+            CustomList<int> list = new CustomList<int>();
+            CustomList<int> expected = new CustomList<int>() ;
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            // Act 
 
-        //    list.Add(1);
-        //    list.Add(2);
-        //    list.Add(3);
-        //    Assert.AreEqual(list[0], expected[0]);
-        //}
+            list.Add(5);
+            list.Add(6);
+            list.Add(4);
+            Assert.AreEqual(list[6], expected[1]);
+        }
         [TestMethod]
         public void Remove_SingleInt_CountGoesDown()
         {
@@ -75,10 +78,10 @@ namespace custom_list_class
             list.Add(12);
             
             // Act
-            int NotExpected = list.Count;
+            int Expected = list.Count;
             list.Remove(1);
             // Assert
-            Assert.AreNotEqual(NotExpected, list.Count);
+            Assert.AreNotEqual(Expected, list.Count);
         }
         [TestMethod]
         public void Remove_SingleString_IndexChange()
@@ -100,7 +103,7 @@ namespace custom_list_class
         {
             // Arrange
             CustomList<int> list = new CustomList<int>() ;
-            int expected = 0;
+            int expected = 5;
             list.Add(0);
             list.Add(2);
             list.Add(3);
@@ -113,9 +116,19 @@ namespace custom_list_class
             list.Remove(0);
             list.Remove(3);
             // Assert
-            Assert.AreEqual(expected, list[5]);
+            Assert.AreEqual(expected, list[2]);
         }
-        
+        [TestMethod]
+        public void Remove_Nothing_ResultEqualsFalse()
+        {
+            // Arrange
+            CustomList<object> list = new CustomList<object>();
+            // Act
+            bool expected = false;
+            bool remove = list.Remove(list);
+            // Assert
+            Assert.AreEqual(expected, remove);
+        }
     }
     }
 

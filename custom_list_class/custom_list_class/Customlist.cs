@@ -82,8 +82,33 @@ namespace custom_list_class
                 data = result;
                 return removed;
             }
-
+        public static CustomList<T> operator +(CustomList<T> one, CustomList<T> two)
+        {
+            CustomList<T> result = new CustomList<T>();
+            for (int i = 0; i < one.Count; i++)
+            {
+                result.Add(one[i]);
+            }
+            for (int i = 0; i < two.Count; i++)
+            {
+                result.Add(two[i]);
+            }
+            return result;
         }
+        public static CustomList<T> operator -(CustomList<T> one, CustomList<T> two)
+        {
+            CustomList<T> result = new CustomList<T>();
+            for (int i = 0; i < one.Count; i++)
+            {
+                result.Add(one[i]);
+            }
+            for (int i = 0; i < two.Count; i++)
+            {
+                result.Remove(two[i]);
+            }
+            return result;
+        }
+    }
 
     }
 
