@@ -95,6 +95,7 @@ namespace custom_list_class
             }
             return result;
         }
+        
         public static CustomList<T> operator -(CustomList<T> one, CustomList<T> two)
         {
             CustomList<T> result = new CustomList<T>();

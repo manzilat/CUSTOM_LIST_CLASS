@@ -118,6 +118,7 @@ namespace custom_list_class
             // Assert
             Assert.AreEqual(expected, list[2]);
         }
+
         [TestMethod]
         public void Remove_Nothing_ResultEqualsFalse()
         {
@@ -129,6 +130,77 @@ namespace custom_list_class
             // Assert
             Assert.AreEqual(expected, remove);
         }
+        [TestMethod]
+        public void Remove_Object_ResultEqualsTrue()
+        {
+            // Arrange
+            CustomList<object> list = new CustomList<object>();
+            list.Add(list);
+            list.Add(list);
+            // Act
+            bool expected = true;
+            bool remove = list.Remove(list);
+            // Assert
+            Assert.AreEqual(expected, remove);
+        }
+        [TestMethod]
+        public void Plus_Bools_ListsConcat()
+        {
+            // Arrange
+            CustomList<bool> list = new CustomList<bool>();
+            list.Add(true);
+            list.Add(false);
+            // Act
+            list = list + list;
+            bool expected = true;
+            // Assert
+            Assert.AreEqual(expected, list[2]);
+        }
+        [TestMethod]
+        public void Plus_Strings_ConcatLists()
+        {
+            // Arrange
+            CustomList<string> list = new CustomList<string>() ;
+            list.Add("one");
+            list.Add("Two");
+            // Act
+            list = list + list;
+            string expected = "Two";
+            // Assert
+            Assert.AreEqual(expected, list[3]);
+        }
+        [TestMethod]
+        public void Plus_Ints_CountIncrease()
+        {
+            // Arrange
+            CustomList<int> list = new CustomList<int>() ;
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            // Act
+            list = list + list;
+            int expected = 6;
+            // Assert
+            Assert.AreEqual(expected, list.Count);
+        }
     }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
