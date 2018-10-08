@@ -10,7 +10,7 @@ namespace custom_list_class
     {
         T[] data;
         int count ;
-        private T[] arr = new T[4];
+        
        
 
         public T this[int i]
@@ -28,7 +28,7 @@ namespace custom_list_class
 
         public CustomList()
         {
-            data = new T[4];
+            data = new T[8];
             count = 0;
         }
 
@@ -61,25 +61,25 @@ namespace custom_list_class
 
                 for (int i = 0; i < count; i++)
                 {
-                    if (arr[i].Equals(input) && !removed)
+                    if (data[i].Equals(input) && !removed)
                     {
                         removed = true;
                         count--;
                         if (i < count)
                         {
-                            result[i] = arr[i + 1];
+                            result[i] = data[i + 1];
                         }
                     }
                     else if (removed)
                     {
-                        result[i] = arr[i + 1];
+                        result[i] = data[i + 1];
                     }
                     else
                     {
-                        result[i] = arr[i];
+                        result[i] = data[i];
                     }
                 }
-                arr = result;
+                data = result;
                 return removed;
             }
 

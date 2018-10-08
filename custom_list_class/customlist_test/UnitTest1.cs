@@ -53,7 +53,7 @@ namespace custom_list_class
 
         }
         //[TestMethod]
-        //public void Add_MultiInts_ImprovedArray()
+        //public void Add_MultiInt_ImprovedArray()
         //{
         //    // Arrange
         //    CustomList<int> list = new CustomList<int>();
@@ -75,11 +75,47 @@ namespace custom_list_class
             list.Add(12);
             
             // Act
-            int Expected = list.Count;
+            int NotExpected = list.Count;
             list.Remove(1);
             // Assert
-            Assert.AreEqual(Expected, list.Count);
+            Assert.AreNotEqual(NotExpected, list.Count);
         }
+        [TestMethod]
+        public void Remove_SingleString_IndexChange()
+        {
+            // Arrange
+            CustomList<string> list = new CustomList<string>();
+            list.Add("One");
+            list.Add("Two");
+            list.Add("Three");
+            // Act
+
+            list.Remove("One");
+            string expected = "Three";
+            // Assert
+            Assert.AreEqual(expected, list[1]);
+        }
+        [TestMethod]
+        public void Remove_MultiInt_IndexChange()
+        {
+            // Arrange
+            CustomList<int> list = new CustomList<int>() ;
+            int expected = 0;
+            list.Add(0);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+            list.Add(5);
+            list.Add(6);
+            list.Add(7);
+            // Act
+
+            list.Remove(0);
+            list.Remove(3);
+            // Assert
+            Assert.AreEqual(expected, list[5]);
+        }
+        
     }
     }
 
