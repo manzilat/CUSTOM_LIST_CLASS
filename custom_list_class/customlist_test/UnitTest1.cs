@@ -53,6 +53,34 @@ namespace custom_list_class
 
         }
         [TestMethod]
+        public void Add_MultiObjects_SizeExpands()
+        {
+            // Arrange
+            CustomList<object> list = new CustomList<object>();
+            // Act
+            object obj = new object();
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+            list.Add(obj);
+           
+            int expected = 15;
+            // Assert
+            Assert.AreEqual(expected, list.Count);
+
+        }
+        [TestMethod]
         public void Add_MultiInt_ImprovedArray()
         {
             // Arrange
@@ -183,8 +211,38 @@ namespace custom_list_class
             // Assert
             Assert.AreEqual(expected, list.Count);
         }
+        [TestMethod]
+        public void ToString_MultiInts_ReturnOneString()
+        {
+            // Arrange
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+           
+            // Act
+            string expected = "123";
+            string result = list.ToString();
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
+        [TestMethod]
+        public void ToString_Bools_ReturnOneString()
+        {
+            // Arrange
+            CustomList<bool> list = new CustomList<bool>();
+            list.Add(true);
+            list.Add(false);
+            list.Add(true);
+            
+            // Act
+            string expected = "TrueFalseTrue";
+            string result = list.ToString();
+            // Assert
+            Assert.AreEqual(expected, result);
+        }
     }
-    }
+}
 
 
 
