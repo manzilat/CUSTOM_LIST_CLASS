@@ -145,25 +145,7 @@ namespace custom_list_class
             }
             return newList;
         }
-        public void Sort()
-        {
-            T[] result = new T[count];
-            result = array1;
-            int i, j;
-            int N = count;
-            for (j = N - 1; j > 0; j--)
-            {
-                for (i = 0; i < j; i++)
-                {
-                    if (Comparer<T>.Default.Compare(result[i], result[i + 1]) > 0)
-                    {
-                        Swap(result, i, i + 1);
-                    }
-                }
-            }
-            array1 = result;
-        }
-
+       
         public void Swap(T[] list, int left, int right)
         {
             T temporary;

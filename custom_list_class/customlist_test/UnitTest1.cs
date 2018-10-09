@@ -74,7 +74,7 @@ namespace custom_list_class
             list.Add(obj);
             list.Add(obj);
             list.Add(obj);
-           
+
             int expected = 15;
             // Assert
             Assert.AreEqual(expected, list.Count);
@@ -85,7 +85,7 @@ namespace custom_list_class
         {
             // Arrange
             CustomList<int> list = new CustomList<int>();
-            CustomList<int> expected = new CustomList<int>() ;
+            CustomList<int> expected = new CustomList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
@@ -104,7 +104,7 @@ namespace custom_list_class
             list.Add(1);
             list.Add(2);
             list.Add(12);
-            
+
             // Act
             int Expected = list.Count;
             list.Remove(1);
@@ -130,7 +130,7 @@ namespace custom_list_class
         public void Remove_MultiInt_IndexChange()
         {
             // Arrange
-            CustomList<int> list = new CustomList<int>() ;
+            CustomList<int> list = new CustomList<int>();
             int expected = 5;
             list.Add(0);
             list.Add(2);
@@ -188,7 +188,7 @@ namespace custom_list_class
         public void Plus_Strings_ConcatLists()
         {
             // Arrange
-            CustomList<string> list = new CustomList<string>() ;
+            CustomList<string> list = new CustomList<string>();
             list.Add("one");
             list.Add("Two");
             // Act
@@ -201,13 +201,56 @@ namespace custom_list_class
         public void Plus_Ints_CountIncrease()
         {
             // Arrange
-            CustomList<int> list = new CustomList<int>() ;
+            CustomList<int> list = new CustomList<int>();
             list.Add(1);
             list.Add(2);
             list.Add(3);
             // Act
             list = list + list;
             int expected = 6;
+            // Assert
+            Assert.AreEqual(expected, list.Count);
+        }
+        [TestMethod]
+        public void Minus_Strings_IndexShifts()
+        {
+            // Arrange
+            CustomList<string> list = new CustomList<string>();
+            list.Add("true");
+            list.Add("true");
+            list.Add("false");
+            CustomList<string> otherList = new CustomList<string>();
+            list.Add("true");
+            // Act
+            string expected = "true";
+            list = list - otherList;
+            // Assert
+            Assert.AreEqual(expected, list[1]);
+        }
+        [TestMethod]
+        public void Minus_Bool_CountDecrease()
+        {
+            // Arrange
+            CustomList<bool> list = new CustomList<bool>();
+            list.Add(true);
+            list.Add(true);
+            list.Add(true);
+
+            // Act
+            int expected = 0;
+            list = list - list;
+            // Assert
+            Assert.AreEqual(expected, list.Count);
+        }
+        [TestMethod]
+        public void Minus_Objects_CountDecreases()
+        {
+            // Arrange
+            CustomList<object> list = new CustomList<object>() { };
+            list.Add(list);
+            // Act
+            int expected = 0;
+            list = list - list;
             // Assert
             Assert.AreEqual(expected, list.Count);
         }
@@ -219,7 +262,7 @@ namespace custom_list_class
             list.Add(1);
             list.Add(2);
             list.Add(3);
-           
+
             // Act
             string expected = "123";
             string result = list.ToString();
@@ -234,17 +277,62 @@ namespace custom_list_class
             list.Add(true);
             list.Add(false);
             list.Add(true);
-            
+
             // Act
             string expected = "TrueFalseTrue";
             string result = list.ToString();
             // Assert
             Assert.AreEqual(expected, result);
         }
+        // Zip TestMethods
+        [TestMethod]
+        public void ZipListProperties_ListPropertiesString_ListPropertiesZipped()
+        {
+            //Arrange
+            CustomList<string> expectedResult = new CustomList<string>();
+            expectedResult.Add("A");
+            expectedResult.Add("B");
+            expectedResult.Add("C");
+            expectedResult.Add("D");
+
+            CustomList<string> stringsA = new CustomList<string>();
+            CustomList<string> stringsB = new CustomList<string>();
+            CustomList<string> actualResult = new CustomList<string>();
+            stringsA.Add("A");
+            stringsA.Add("C");
+            stringsB.Add("B");
+            stringsB.Add("D");
+
+        }
+        [TestMethod]
+        public void ZipList_Listint_ListZipped()
+        {
+            //Arrange
+            CustomList<int> expectedResult = new CustomList<int>();
+                 
+            CustomList<int> list = new CustomList<int>();
+            list.Add(1);
+            list.Add(2);
+            list.Add(3);
+            list.Add(4);
+
+
+            CustomList<int> moreNumbers = new CustomList<int>();
+            CustomList<int> actualResult = new CustomList<int>();
+            list.Add(1);
+            list.Add(3);
+            moreNumbers.Add(2);
+            moreNumbers.Add(4);
+
+            //Act
+            actualResult = list.Zip(moreNumbers);
+
+            //Assert
+            Assert.AreEqual(expectedResult.ToString(), actualResult.ToString());
+        }
     }
+
 }
-
-
 
 
 
